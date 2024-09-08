@@ -1,4 +1,4 @@
-subscriptionID= ${{AZURE_SUBSCRIPTION_ID}}
+subscriptionID= ${{secrets.AZURE_SUBSCRIPTION_ID}}
 terraform {
   required_providers {
     azurerm = {
