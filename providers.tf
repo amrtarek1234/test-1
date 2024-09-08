@@ -10,6 +10,7 @@ terraform {
 
   # Update this block with the location of your terraform state file
   backend "azurerm" {
+    subscription_id      =  ${{AZURE_SUBSCRIPTION_ID}}
     resource_group_name  = "terraform.github-actions"
     storage_account_name = "githubactoinstorage"
     container_name       = "tfstate"
