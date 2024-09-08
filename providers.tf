@@ -14,6 +14,5 @@ terraform {
     storage_account_name = "githubactoinstorage"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
-    use_oidc             = true
   }
 }
