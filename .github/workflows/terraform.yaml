@@ -19,7 +19,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: az login
-      uses: azure/login@2
+      uses: azure/login@v2
       with:
        creds: ${{secrets.AZURE_CREDENTIALS}}
 
