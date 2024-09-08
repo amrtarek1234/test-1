@@ -27,7 +27,7 @@ jobs:
       run: terraform init
 
     # Validate terraform files
-    - name: Terraform Validate
+    - name: Terraform Validate d
       run: terraform validate
 
     # Checks that all Terraform configuration files adhere to a canonical format
