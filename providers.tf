@@ -3,7 +3,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-    features {}
+ 
     
 
     }
@@ -18,4 +18,7 @@ terraform {
     use_azuread_auth=true
     key                  = "terraform.tfstate"
   }
+}
+provider "azurerm" {
+  features {}
 }
