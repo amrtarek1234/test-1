@@ -86,10 +86,6 @@ resource "azurerm_linux_virtual_machine" "webserver_vm" {
     azurerm_network_interface.webserver_nic.id,
   ]
 
-  admin_ssh_key {
-    username   = "adminuser"
-    public_key = var.vm_ssh_public_key #file("~/.ssh/id_rsa.pub")
-  }
 
   os_disk {
     caching              = "ReadWrite"
@@ -103,19 +99,8 @@ resource "azurerm_linux_virtual_machine" "webserver_vm" {
     version   = "latest"
   }
 
-  # Provision a script to install Nginx directly in custom_data
-  custom_data = base64encode(<<-EOT
-    #!/bin/bash
-    sudo apt-get update
-    sudo apt-get install -y nginx
-    sudo systemctl enable nginx
-    sudo systemctl start nginx
-  EOT
-  )
+
 
 }
 
-variable "vm_ssh_public_key" {
-  description = "The public SSH key to use for the virtual machine."
-  type        = string
-}
+
