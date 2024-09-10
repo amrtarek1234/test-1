@@ -69,38 +69,4 @@ resource "azurerm_network_security_group" "webserver_nsg" {
   }
 }
 
-# Associate the NSG with the Network Interface
-resource "azurerm_network_interface_security_group_association" "webserver_nic_sg_assoc" {
-  network_interface_id      = azurerm_network_interface.webserver_nic.id
-  network_security_group_id = azurerm_network_security_group.webserver_nsg.id
-}
-
-resource "azurerm_linux_virtual_machine" "webserver_vm" {
-  name                = "webserver-machine"
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
-  size                = "Standard_F2"
-  admin_username      = "adminuser"
-
-  network_interface_ids = [
-    azurerm_network_interface.webserver_nic.id,
-  ]
-
-
-  os_disk {
-    caching              = "ReadWrite"
-    storage_account_type = "Standard_LRS"
-  }
-
-  source_image_reference {
-    publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
-    version   = "latest"
-  }
-
-
-
-}
-
 
