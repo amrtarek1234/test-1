@@ -2,10 +2,8 @@ name: Test Workflow
 on:
   push:
     branches:
-      - test  # Run tests on pushes to this branch
-  pull_request:
-    branches:
-      - main  # Run tests when a pull request is created/updated against the main branch
+      - main  # Run tests on pushes to this branch
+ 
 
 jobs:
   terraform-unit-tests:
