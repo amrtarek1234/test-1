@@ -42,8 +42,6 @@ jobs:
       #  ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
        # ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       
-    - name: Select Workspace
-      run: terraform workspace select test-workpace || terraform workspace new test-workspace
 
     # Validate terraform files
     - name: Terraform Validate d
