@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg-aks" {
-  name     = "testgitactions"
+  name     = "test-branch"
   location =  "West Europe"
 }
