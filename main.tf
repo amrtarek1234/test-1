@@ -1,6 +1,5 @@
-resource "azurerm_resource_group" "rg-akss" {
+resource "azurerm_resource_group" "rg" {
 
-
-  name     = "test-branch01"
+  name     = "test-branch00"
   location =  "West Europe"
 }
