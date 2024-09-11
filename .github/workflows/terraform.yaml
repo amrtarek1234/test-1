@@ -1,4 +1,4 @@
-name: Test Workflow d
+name: Test Workflow main.branch
 on:
   push:
     branches:
