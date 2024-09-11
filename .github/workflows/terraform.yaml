@@ -2,7 +2,7 @@ name: Test Workflow d
 on:
   push:
     branches:
-      - main # Run tests on pushes to this branch
+      - test # Run tests on pushes to this branch
  
 
 

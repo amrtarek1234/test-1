@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "rg" {
 
-  name     = "test-branch00"
+  name     = "test-branch01"
   location =  "West Europe"
 }
 resource "azurerm_virtual_network" "webserver_vnet" {
