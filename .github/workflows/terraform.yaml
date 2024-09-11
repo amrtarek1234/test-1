@@ -23,12 +23,7 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v3
-    #- name: az login
-      #uses: azure/login@v2
-      #with:
-       # creds: ${{ secrets.AZURE_CREDENTIALS }}
-        #enable-AzPSSession: true
-
+                       
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
@@ -40,11 +35,7 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
-   #   env:
-    #    ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-     #   ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-      #  ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-       # ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  
       
   
 
@@ -55,10 +46,6 @@ jobs:
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform plan
       run: terraform plan
-      #env:
-       # ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-        #ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-        #ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        #ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+     
     - name: Terraform apply
       run: terraform apply -auto-approve
