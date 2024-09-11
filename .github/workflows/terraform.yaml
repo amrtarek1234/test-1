@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - test # Run tests on pushes to this branch
+  pull_request:
+    branches:
+      - main # Run tests during pull requests to the main branch  
  
 
 
