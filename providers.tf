@@ -15,7 +15,7 @@ terraform {
     storage_account_name = "githubactoinstorage"
     container_name       = "tfstate"
     use_azuread_auth=true
-    key                  = "terraform.tfstate.test"
+    key                  = "terraform.tfstate"
   }
 }
 provider "azurerm" {
