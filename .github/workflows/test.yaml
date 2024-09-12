@@ -1,0 +1,21 @@
+name: Test
+on:
+  push:
+    branches:
+
+      - test # Run tests on pushes to this branch
+      - main
+  pull_request:
+    branches:
+      - main # Run tests during pull requests to the main branch  
+jobs:
+  test-job:
+    runs-on:  ubuntu-latest
+    steps:
+    - name: step-1
+      run: sudo apt update
+    - name: step-2
+      run: sudo apt install default-jdk
+    - name: step-3
+      run: sudo apt install default-jre
+  
