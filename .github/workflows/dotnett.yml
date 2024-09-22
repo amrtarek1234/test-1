@@ -1,7 +1,5 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: .NETtt
+name: .NET
 
 on:
   push:
@@ -21,8 +19,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore HelloWorldApp/HelloWorldApp.csproj
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build HelloWorldApp/HelloWorldApp.csproj --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test HelloWorldApp/HelloWorldApp.csproj --no-build --verbosity normal
