@@ -10,28 +10,25 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Use a Windows runner for .NET Framework projects
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
       with:
-        dotnet-version: '6.0.0'  # Change to your desired .NET version
+        msbuild-version: 'latest'
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: msbuild YourSolution.sln /p:Configuration=Release /t:Restore
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
-
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: msbuild YourSolution.sln /p:Configuration=Release
 
     - name: Publish
-      run: dotnet publish -c Release -o ./output
+      run: msbuild YourProject.csproj /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=YourPublishProfile.pubxml  # Adjust as necessary
 
     - name: Deploy
       run: |
