@@ -1,0 +1,39 @@
+name: .NET Build
+
+on:
+  push:
+    branches:
+      - main  # Change this to your default branch name if necessary
+  pull_request:
+    branches:
+      - main  # Change this to your default branch name if necessary
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '6.0.x'  # Change to your desired .NET version
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
+
+    - name: Publish
+      run: dotnet publish -c Release -o ./output
+
+    - name: Deploy
+      run: |
+        echo "Deploying..."
+        # Add your deployment commands here, e.g., FTP, Azure, etc.
