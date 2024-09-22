@@ -1,36 +1,33 @@
-name: .NET Build
+name: 030-dotnet-workflow
 
 on:
   push:
-    branches:
-      - main  # Change this to your default branch name if necessary
-  pull_request:
-    branches:
-      - main  # Change this to your default branch name if necessary
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: windows-latest  # Use a Windows runner for .NET Framework projects
+  build-dotnet-app:
+
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: 03-app-dotnet
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.1
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
       with:
-        msbuild-version: 'latest'
-
+        dotnet-version: 6.0.x
+  
     - name: Restore dependencies
-      run: msbuild YourSolution.sln /p:Configuration=Release /t:Restore
-
+      run: dotnet restore
+      
     - name: Build
-      run: msbuild YourSolution.sln /p:Configuration=Release
-
-    - name: Publish
-      run: msbuild YourProject.csproj /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=YourPublishProfile.pubxml  # Adjust as necessary
-
-    - name: Deploy
-      run: |
-        echo "Deploying..."
-        # Add your deployment commands here, e.g., FTP, Azure, etc.
+      run: dotnet build --no-restore
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
